@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>
+
+<b>ASPPatterns.Chap4.DomainModel.Model:</b>
+
+The Domain Model project will contain all of the business logic within the application. Domain objects will live in here and will have relation-
+ships to other objects to represent the banking domain the application is built around. The project will also define contracts in the form of interfaces for domain object persistence and
+retrieval; the Repository pattern will be employed for all persistence management needs. (The Repository pattern is discussed in greater detail in Chapter 7.) The Model project will not
+have a reference to any other project ensuring, it remains free of any infrastructure concernsand focuses squarely on the business domain
+
+ASPPatterns.Chap4.DomainModel.Repository:
+
+The Repository project will contain implementations of the repository interfaces defined in the Model project. The Repository has a reference to the Model project in order to 
+hydrate domain objects from the database as well as to persist. The Repository project is concerned only with the responsibility of domain object persistence and retrieval.
+
+ASPPatterns.Chap4.DomainModel.AppService:
+The AppService project will act as the gateway into the application—the API if you will. The presentation layer will communicate with
+the AppService via messages, which are simple data transfer objects. The messaging patterns are covered in detail in Chapter 7. The AppService layer will also define view models, which
+are flattened views of the domain model used solely for the displaying of data. Chapter 8 covers this topic in greater detail.
+
+ASPPatterns.Chap4.DomainModel.UI.Web:
+The UI.Web project is responsible for the presentation and use experience needs of the application. This project talks only to the AppService and receives strongly typed view models 
+that have been created specifically for the views of the user experience.
+
+    </p>
+</body>
+</html>
