@@ -15,6 +15,8 @@
             </p>
         </div>
     </section>
+
+
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h3>We suggest the following:</h3>
@@ -36,4 +38,79 @@
             <a href="http://go.microsoft.com/fwlink/?LinkId=245143">Learn more…</a>
         </li>
     </ol>
+
+    <div>
+    
+     <fieldset>
+        <legend>Create New Account</legend>
+     <p>       
+        Customer Ref:
+        <asp:TextBox ID="txtCustomerRef" runat="server" />
+        <asp:Button ID="btCreateAccount" runat="server" Text="Create Account"
+onclick="btCreateAccount_Click" />
+    </p>
+    </fieldset>
+    <fieldset>
+        <legend>Account Detail</legend>
+        <p>
+        <asp:DropDownList AutoPostBack="true" ID="ddlBankAccounts" runat="server"            
+              onselectedindexchanged="ddlBankAccounts_SelectedIndexChanged"/ >
+        </p>
+        <p>
+            Account No:
+            <asp:Label ID="lblAccountNo" runat="server" />
+        </p>
+        <p>
+            Customer Ref:
+            <asp:Label ID=""lblCustomerRef"" runat="server" />
+        </p>
+        <p>
+            Balance:
+            <asp:Label ID=""lblBalance"" runat="server" />
+        </p>
+        <p>
+            Amount £<asp:TextBox ID=""txtAmount"" runat="server" Width="60px"/>
+            &nbsp;
+            <asp:Button ID=""btnWithdrawal"" runat="server" Text="Withdrawal"
+                onclick="btnWithdrawal_Click" />
+            &nbsp;
+            <asp:Button ID=""btnDeposit"" runat="server" Text="Deposit"
+                onclick="btnDeposit_Click" />
+        </p>
+        <p>
+            Transfer
+            £<asp:TextBox ID=""txtAmountToTransfer"" runat="server"
+                          Width="60px" />
+        &nbsp;to
+        <asp:DropDownList AutoPostBack="true" 
+              ID=""ddlBankAccountsToTransferTo"" runat="server"/>
+        &nbsp;
+         <asp:Button ID=""btnTransfer"" runat="server" Text="Commit"
+                onclick="btnTransfer_Click" />
+        </p>
+        <p>
+            Transactions</p>
+            <asp:Repeater ID=""rptTransactions"" runat="server">
+                <HeaderTemplate>
+                    <table>
+                    <tr>
+                        <td>deposit</td>
+                        <td>withdrawal</td>
+                        <td>reference</td>
+                    </tr>
+                </HeaderTemplate> 
+                <ItemTemplate>
+                    <tr>
+                        <td><%# Eval(“Deposit")  %></td>
+                        <td><%# Eval(“Withdrawal")  %></td>
+                        <td><%# Eval(“Reference")  %></td>
+                        <td><%# Eval(“Date")  %></td>
+                    </tr>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </table>
+                </FooterTemplate>  
+            </asp:Repeater>
+    </fieldset>   
+    </div>
 </asp:Content>

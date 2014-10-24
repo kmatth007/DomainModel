@@ -26,6 +26,6 @@ namespace ASPPatterns.Chap4.DomainModel.ModelDO
         { get; internal set; }
 
         public DateTime Date
-        {getl internal set;}
+        { get; internal set; }
     }
 }

@@ -10,7 +10,7 @@ namespace ASPPatterns.Chap4.DomainModel.ModelDO
     {
         private decimal _balance;
         private Guid _accountNo;
-        private string _customerRef
+        private string _customerRef;
         private IList<Transaction> _transactions;
 
         public BankAccount() : this(Guid.NewGuid(), 0, new List<Transaction>(), "")

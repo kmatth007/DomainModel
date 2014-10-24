@@ -7,11 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ASPPatterns.Chap4.DomainModel.UI.Web
-{
-
-
-    public partial class _Default
-    {
+namespace ASPPatterns.Chap4.DomainModel.UI.Web {
+    
+    
+    public partial class _Default {
+        
+        /// <summary>
+        /// txtCustomerRef control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerRef;
+        
+        /// <summary>
+        /// btCreateAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btCreateAccount;
+        
+        /// <summary>
+        /// lblAccountNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAccountNo;
     }
 }
