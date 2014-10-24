@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationBankAccountService.cs" />
     <Compile Include="Messages\BankAccountCreateRequest.cs" />
     <Compile Include="Messages\BankAccountCreateResponse.cs" />
     <Compile Include="Messages\DepositRequest.cs" />
