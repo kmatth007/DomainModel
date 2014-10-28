@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ASPPatterns.Chap4.DomainModel.AppService.Messages;
 using ASPPatterns.Chap4.DomainModel.ModelDO;
 using ASPPatterns.Chap4.DomainModel.Repository;
+using ASPPatterns.Chap4.DomainModel.AppService.ViewModel;
 
 namespace ASPPatterns.Chap4.DomainModel.AppService
 {
@@ -81,6 +82,39 @@ namespace ASPPatterns.Chap4.DomainModel.AppService
             return response;
 
         }
+
+        public FindAllBankAccountResponse GetAllBankAccounts()
+        {
+            FindAllBankAccountResponse FindAllBankAccountResponse = new FindAllBankAccountResponse();
+            IList<BankAccountView> bankAccountViews = new List<BankAccountView>();
+
+            FindAllBankAccountResponse.BankAccountView = bankAccountViews;
+
+            foreach (BankAccount acc in _bankRepository.FindAll())
+            {
+                bankAccountViews.Add(ViewMapper.CreateBankAccountViewFrom(acc));
+            }
+
+            return FindAllBankAccountResponse;
+        }
+
+        public FindBankAccountResponse GetBankAccountBy(Guid Id)
+        {
+            FindBankAccountResponse bankAccountResponse = new FindBankAccountResponse();
+            BankAccount acc = _bankRepository.FindBy(Id);
+            BankAccountView bankAccountView = ViewMapper.CreateBankAccountViewFrom(acc);
+
+            foreach (Transaction tran in acc.GetTransactions())
+            {
+                bankAccountView.Transactions.Add(ViewMapper.CreateTransactionViewFrom(tran));
+            }
+
+            bankAccountResponse.BankAccount = bankAccountView;
+
+            return bankAccountResponse;
+        }
+            
+
         
 
 

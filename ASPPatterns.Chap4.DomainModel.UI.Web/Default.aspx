@@ -46,15 +46,17 @@
      <p>       
         Customer Ref:
         <asp:TextBox ID="txtCustomerRef" runat="server" />
-        <asp:Button ID="btCreateAccount" runat="server" Text="Create Account"
-onclick="btCreateAccount_Click" />
+        <asp:Button ID="btCreateAccount" runat="server" Text="Create Account" onclick="btCreateAccount_Click" />
     </p>
     </fieldset>
     <fieldset>
         <legend>Account Detail</legend>
         <p>
-        <asp:DropDownList AutoPostBack="true" ID="ddlBankAccounts" runat="server"            
-              onselectedindexchanged="ddlBankAccounts_SelectedIndexChanged"/ >
+         
+            <asp:DropDownList AutoPostBack="true" ID="ddlBankAccounts" runat="server" OnSelectedIndexChanged="ddlBankAccounts_SelectedIndexChanged">
+            </asp:DropDownList>
+        <%--<asp:DropDownList AutoPostBack="true" ID="ddlBankAccounts" runat="server"       
+              onselectedindexchanged="ddlBankAccounts_SelectedIndexChanged"/ > --%> 
         </p>
         <p>
             Account No:
@@ -62,35 +64,31 @@ onclick="btCreateAccount_Click" />
         </p>
         <p>
             Customer Ref:
-            <asp:Label ID=""lblCustomerRef"" runat="server" />
+            <asp:Label ID="lblCustomerRef" runat="server" />
         </p>
         <p>
             Balance:
-            <asp:Label ID=""lblBalance"" runat="server" />
+            <asp:Label ID="lblBalance" runat="server" />
         </p>
         <p>
-            Amount £<asp:TextBox ID=""txtAmount"" runat="server" Width="60px"/>
+            Amount £<asp:TextBox ID="txtAmount" runat="server" Width="60px"/>
             &nbsp;
-            <asp:Button ID=""btnWithdrawal"" runat="server" Text="Withdrawal"
-                onclick="btnWithdrawal_Click" />
+            <asp:Button ID="btnWithdrawal" runat="server" Text="Withdrawal" onclick="btnWithdrawal_Click" />
             &nbsp;
-            <asp:Button ID=""btnDeposit"" runat="server" Text="Deposit"
-                onclick="btnDeposit_Click" />
+            <asp:Button ID="btnDeposit" runat="server" Text="Deposit" onclick="btnDeposit_Click" />
         </p>
         <p>
             Transfer
-            £<asp:TextBox ID=""txtAmountToTransfer"" runat="server"
-                          Width="60px" />
+            £<asp:TextBox ID="txtAmountToTransfer" runat="server" Width="60px" />
         &nbsp;to
-        <asp:DropDownList AutoPostBack="true" 
-              ID=""ddlBankAccountsToTransferTo"" runat="server"/>
+        <asp:DropDownList AutoPostBack="true" ID="ddlBankAccountsToTransferTo" runat="server"/>       
+
         &nbsp;
-         <asp:Button ID=""btnTransfer"" runat="server" Text="Commit"
-                onclick="btnTransfer_Click" />
+         <asp:Button ID="btnTransfer" runat="server" Text="Commit" onclick="btnTransfer_Click" />
         </p>
         <p>
             Transactions</p>
-            <asp:Repeater ID=""rptTransactions"" runat="server">
+            <asp:Repeater ID="rptTransactions" runat="server">
                 <HeaderTemplate>
                     <table>
                     <tr>
@@ -101,10 +99,10 @@ onclick="btCreateAccount_Click" />
                 </HeaderTemplate> 
                 <ItemTemplate>
                     <tr>
-                        <td><%# Eval(“Deposit")  %></td>
-                        <td><%# Eval(“Withdrawal")  %></td>
-                        <td><%# Eval(“Reference")  %></td>
-                        <td><%# Eval(“Date")  %></td>
+                        <td><%# Eval("Deposit")  %></td>
+                        <td><%# Eval("Withdrawal")  %></td>
+                        <td><%# Eval("Reference")  %></td>
+                        <td><%# Eval("Date")  %></td>
                     </tr>
                 </ItemTemplate>
                 <FooterTemplate>

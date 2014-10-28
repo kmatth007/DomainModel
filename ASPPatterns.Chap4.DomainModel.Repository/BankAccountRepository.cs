@@ -70,17 +70,17 @@ namespace ASPPatterns.Chap4.DomainModel.Repository
 
         public void UpdateTransactionsFor(BankAccount bankAccount)
         {
-            string deleteTransactionSQl = "DELETE Transactions WHERE BankAccountId = @BankAccountId;";
+            string deleteTransactionSQl = "DELETE Transaction WHERE BankAccountId = @BankAccountId;";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 SqlCommand command = connection.CreateCommand();
                 command.CommandText = deleteTransactionSQl;
-                command.Parameters.Add(new SqlParameter("@BankAccountI", bankAccount.AccountNo));
+                command.Parameters.Add(new SqlParameter("@BankAccountId", bankAccount.AccountNo));
                 connection.Open();
                 command.ExecuteNonQuery();
             }
 
-            string insertTransactionSql = "INSERT INTO Transactions " + "(BankAccountID, Deposit, Withdraw, Reference, [Date]) VALUES " +
+            string insertTransactionSql = "INSERT INTO Transaction " + "(BankAccountID, Deposit, Withdraw, Reference, [Date]) VALUES " +
                  "(@BankAccountID, @Deposit,  @Withdraw,  @Reference, @Date)";
 
             foreach(Transaction tran in bankAccount.GetTransactions())
@@ -106,8 +106,8 @@ namespace ASPPatterns.Chap4.DomainModel.Repository
         {
             IList<BankAccount> accounts = new List<BankAccount>();
 
-            string queryString = "SELECT * FROM dbo.Transactions INNER JOIN " + "dbo.BankAccounts ON " +
-                "dbo.Transactions.BankAccountId = dbo.BankAccounts.BankAccountId " + "ORDER BY dbo.BankAccounts.BankAccountId;";
+            string queryString = "SELECT * FROM dbo.Transaction INNER JOIN " + "dbo.BankAccounts ON " +
+                "dbo.Transaction.BankAccountId = dbo.BankAccounts.BankAccountId " + "ORDER BY dbo.BankAccounts.BankAccountId";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -163,8 +163,8 @@ namespace ASPPatterns.Chap4.DomainModel.Repository
         public BankAccount FindBy(Guid accountId)
         {
             BankAccount account;
-            string queryString = "SELECT * FROM " + "dbo.Transactions INNER JOIN " +
-                                 "dbo.BankAccounts ON " + "dbo.Transactions.BankAccountId = " +
+            string queryString = "SELECT * FROM " + "dbo.Transaction INNER JOIN " +
+                                 "dbo.BankAccounts ON " + "dbo.Transaction.BankAccountId = " +
                                  "dbo.BankAccounts.BankAccountId " + "WHERE dbo.BankAccounts.BankAccountId = @BankAccountId;";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
